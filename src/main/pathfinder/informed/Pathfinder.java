@@ -2,6 +2,8 @@ package main.pathfinder.informed;
 
 import java.util.*;
 
+//import main.pathfinder.uninformed.SearchTreeNode;
+
 /**
  * Maze Pathfinding algorithm that implements a basic, uninformed, breadth-first tree search.
  */
@@ -17,7 +19,31 @@ public class Pathfinder {
      * the goal state, of the format: ["R", "R", "L", ...]
      */
     public static ArrayList<String> solve (MazeProblem problem) {
-        throw new UnsupportedOperationException();
+    	Queue<SearchTreeNode> frontier = new LinkedList<SearchTreeNode>();
+    	Set<MazeState> goals = problem.getGoalStates();
+    	boolean keyFound = false;
+    	SearchTreeNode initialState = new SearchTreeNode(problem.getInitialState(), "", null, 0, distance(problem.getInitialState(), goals, problem.getKeyState(), keyFound));
+    	ArrayList<String> actions = new ArrayList<String>();
+    	frontier.add(initialState);
+    	
+    	
+    	
+    	return null;
+        
     }
+    
+    private static int distance (MazeState current, Set<MazeState> goals, MazeState keyState, boolean keyFound) {
+    	if(keyFound) {
+    		ArrayList<Integer> distances = new ArrayList<Integer>();
+    		for (MazeState goal: goals) {
+    			distances.add(Math.abs(goal.col - current.col) + Math.abs(goal.row - current.row));
+    	    }
+    		Collections.sort(distances);
+    		return distances.get(0);
+    	} else {
+    		return Math.abs(keyState.col - current.col) + Math.abs(keyState.row - current.row);
+    	}
+    }
+    	
     
 }

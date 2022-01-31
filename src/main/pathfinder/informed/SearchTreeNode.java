@@ -10,6 +10,7 @@ class SearchTreeNode {
     MazeState state;
     String action;
     SearchTreeNode parent;
+    int cost,futureCost;
     // [!] TODO: Any other fields you want to add
     
     /**
@@ -19,11 +20,13 @@ class SearchTreeNode {
      * @param action The action that *led to* this state / node.
      * @param parent Reference to parent SearchTreeNode in the Search Tree.
      */
-    public SearchTreeNode (MazeState state, String action, SearchTreeNode parent) {
+    public SearchTreeNode (MazeState state, String action, SearchTreeNode parent, int cost, int futureCost) {
         // [!] TODO: You may modify the constructor as you please
         this.state = state;
         this.action = action;
         this.parent = parent;
+        this.cost = cost;
+        this.futureCost = futureCost;
     }
     
     // [!] TODO: Any methods you wish to define, private or otherwise
