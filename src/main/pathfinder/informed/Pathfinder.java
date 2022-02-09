@@ -72,7 +72,14 @@ public class Pathfinder {
     }
     	return null;
  }
-    
+    /**
+     * Determine the distance between two nodes to use as a heuristic for the MazeProblem
+     * @param current mazeState being expanded
+     * @param goals: goal mazeStates within the MazeProblem
+     * @param keyState: key MazeState
+     * @param keyFound: whether or not keyState has been reached
+     * @return distance between current mazeState and goal
+     */
     private static int distance (MazeState current, Set<MazeState> goals, MazeState keyState, boolean keyFound) {
     		ArrayList<Integer> distances = new ArrayList<Integer>();
     		
@@ -91,9 +98,17 @@ public class Pathfinder {
     	} 
     }
 }
+/**
+ * Comparator for two SearchTreeNodes
+ */
     class TreeNodeComparator implements Comparator<SearchTreeNode>{
         
-       
+       /**
+        * Compares two nodes
+        * @param n1
+        * @param n2
+        * @return integer representative of whether n1 is greater than, less than, or equal to n2
+        */
         public int compare(SearchTreeNode n1, SearchTreeNode n2) {
             if (n1.cost + n1.futureCost < n2.cost + n2.futureCost)
                 return -1;
